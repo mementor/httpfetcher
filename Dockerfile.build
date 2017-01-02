@@ -15,7 +15,13 @@ RUN    apk --no-cache add \
        git \
        go \
        bash && \
-       rm -rf /var/cache/apk/*
+       rm -rf /var/cache/apk/* && \
+       mkdir /gopath
+
+ENV GOROOT /usr/lib/go
+ENV GOPATH /gopath
+ENV GOBIN $GOPATH/bin
+ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
 
 VOLUME ["/data"]
-ENTRYPOINT ["sh", "-c", "GOARCH=arm go get -u github.com/mementor/httpfetcher && cp $GOPATH/bin/linux_arm/httpfetcher /data/httpfetcher_arm"]
+ENTRYPOINT ["sh", "-c", "go get -u github.com/mementor/httpfetcher && cp $GOPATH/bin/httpfetcher /data/httpfetcher"]

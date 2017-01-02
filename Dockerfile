@@ -14,7 +14,7 @@ FROM   easypi/alpine-arm
 
 RUN apk add ca-certificates
 
-ADD httpfetcher_arm /bin/httpfetcher
+ADD httpfetcher /bin/httpfetcher
 
 VOLUME ["/data"]
 ENTRYPOINT    ["/bin/httpfetcher"]
