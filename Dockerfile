@@ -10,12 +10,11 @@
 # -----------------------------------------------------------------------------
 
 # Base system is Ubuntu 16.04
-FROM   hypriot/rpi-alpine-scratch
+FROM   easypi/alpine-arm
 
-RUN apk --no-cache add \
-    ca-certificates
+RUN apk add ca-certificates
 
-ADD httpfetcher /bin/httpfetcher
+ADD httpfetcher_arm /bin/httpfetcher
 
 VOLUME ["/data"]
 ENTRYPOINT    ["/bin/httpfetcher"]
