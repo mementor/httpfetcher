@@ -1,0 +1,14 @@
+version: '2'
+services:
+    builder:
+        image: mentro/httpfetcherbuilder
+        build:
+          dockerfile: Dockerfile.build
+          context: ./
+        volumes:
+          - ./:/data
+
+    httpfetcher:
+        image: mentro/httpfetcher
+        build: .
+
